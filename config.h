@@ -6,14 +6,14 @@ static const unsigned int gappiv    = 10;       /* vert inner gap between window
 static const unsigned int gappoh    = 10;       /* horiz outer gap between windows and screen edge */
 static const unsigned int gappov    = 10;       /* vert outer gap between windows and screen edge */
 static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
-static const unsigned int borderpx  = 3;        /* border pixel of windows */
+static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int vertpad            = 10;       /* vertical padding of bar */
-static const int sidepad            = 20;       /* horizontal padding of bar */
+static const int sidepad            = 10;       /* horizontal padding of bar */
 static const char *fonts[]          = { "monospace:size=12" };
-static const char dmenufont[]       = "monospace:size=12";
+static const char dmenufont[]       = "monospace:size=18";
 static char normbgcolor[]           = "#222222";
 static char normbordercolor[]       = "#444444";
 static char normfgcolor[]           = "#bbbbbb";
@@ -36,7 +36,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	/* { "Gimp",     NULL,       NULL,       0,            1,           -1 }, */
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "Brave",  NULL,       NULL,       1 << 8,       0,           -1 },
 };
 
 /* layout(s) */
@@ -102,10 +102,10 @@ static Key keys[] = {
 	TAGKEYS(			XK_9,		8)
 	{ MODKEY,			XK_0,		view,		{.ui = ~0 } },
 	{ MODKEY|ShiftMask,		XK_0,		tag,		{.ui = ~0 } },
-	{ MODKEY,			XK_minus,	spawn,		SHCMD("amixer sset Master 5%- ; pkill -RTMIN+10 dwmblocks") },
-	{ MODKEY|ShiftMask,		XK_minus,	spawn,		SHCMD("amixer sset Master 15%- ; pkill -RTMIN+10 dwmblocks") },
-	{ MODKEY,			XK_equal,	spawn,		SHCMD("amixer sset Master 5%+ ; pkill -RTMIN+10 dwmblocks") },
-	{ MODKEY|ShiftMask,		XK_equal,	spawn,		SHCMD("amixer sset Master 15%+ ; pkill -RTMIN+10 dwmblocks") },
+	{ MODKEY,			XK_minus,	spawn,		SHCMD("pulsemixer --change-volume -5; pkill -RTMIN+10 dwmblocks") },
+	{ MODKEY|ShiftMask,		XK_minus,	spawn,		SHCMD("pulsemixer --change-volume -15; pkill -RTMIN+10 dwmblocks") },
+	{ MODKEY,			XK_equal,	spawn,		SHCMD("pulsemixer --change-volume +5; pkill -RTMIN+10 dwmblocks") },
+	{ MODKEY|ShiftMask,		XK_equal,	spawn,		SHCMD("pulsemixer --change-volume +15; pkill -RTMIN+10 dwmblocks") },
 	/* { MODKEY,			XK_BackSpace,	spawn,		SHCMD("") }, */
 	{ MODKEY|ShiftMask,		XK_BackSpace,	spawn,		SHCMD("prompt \"Reboot computer?\" \"sudo -A reboot\"") },
 
@@ -115,8 +115,8 @@ static Key keys[] = {
 	/* { MODKEY|ShiftMask,		XK_q,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_w,		spawn,		SHCMD("$BROWSER") },
 	/* { MODKEY|ShiftMask,		XK_w,		spawn,		SHCMD("") }, */
-	{ MODKEY,			XK_e,		spawn,		SHCMD("st -e neomutt ; pkill -RTMIN+12 dwmblocks") },
-	{ MODKEY|ShiftMask,		XK_e,		spawn,		SHCMD("tutorialvids") },
+	{ MODKEY,			XK_e,		spawn,		SHCMD("emacs") },
+	/* { MODKEY|ShiftMask,		XK_e,		spawn,		SHCMD("tutorialvids") }, */
 	{ MODKEY,			XK_r,		spawn,		SHCMD("st -e $FILE") },
 	/* { MODKEY|ShiftMask,		XK_r,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_t,		setlayout,	{.v = &layouts[0]} },
@@ -129,7 +129,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_i,		incnmaster,     {.i = -1 } },
 	{ MODKEY,			XK_o,		setlayout,	{.v = &layouts[4]} },
 	/* { MODKEY|ShiftMask,		XK_o,		spawn,		SHCMD("") }, */
-	{ MODKEY,			XK_p,			spawn,		SHCMD("mpc toggle") },
+	{ MODKEY,			XK_p,			spawn,		SHCMD("bwhelper") },
 	{ MODKEY|ShiftMask,		XK_p,			spawn,		SHCMD("mpc pause ; pauseallmpv") },
 	{ MODKEY,			XK_bracketleft,		spawn,		SHCMD("mpc seek -10") },
 	{ MODKEY|ShiftMask,		XK_bracketleft,		spawn,		SHCMD("mpc seek -120") },
@@ -138,7 +138,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_backslash,		view,		{0} },
 	/* { MODKEY|ShiftMask,		XK_backslash,		spawn,		SHCMD("") }, */
 
-	{ MODKEY,			XK_a,		spawn,		SHCMD("st -e alsamixer ; pkill -RTMIN+10 dwmblocks") },
+	{ MODKEY,			XK_a,		spawn,		SHCMD("st -e pulsemixer ; pkill -RTMIN+10 dwmblocks") },
 	/* { MODKEY|ShiftMask,		XK_a,		spawn,		SHCMD("") }, */
 	{ MODKEY,                       XK_s,      togglesticky,   {0} },
 	/* { MODKEY|ShiftMask,		XK_s,		spawn,		SHCMD("") }, */
@@ -149,6 +149,7 @@ static Key keys[] = {
 	{ MODKEY,			XK_g,		shiftview,	{ .i = -1 } },
 	/* { MODKEY|ShiftMask,		XK_g,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_h,		setmfact,	{.f = -0.05} },
+	{ MODKEY|ShiftMask,     XK_h,   spawn	,	SHCMD("st -e htop") },
 	/* { MODKEY,			XK_j,		focusstack,    	{.i = +1 } }, */
 	/* { MODKEY|ShiftMask,		XK_j,		movestack,     	{.i = +1 } }, */
 	/* { MODKEY,			XK_k,		focusstack,    	{.i = -1 } }, */
@@ -170,14 +171,14 @@ static Key keys[] = {
 	/* { MODKEY,			XK_v,		spawn,		SHCMD("") }, */
 	/* { MODKEY|ShiftMask,		XK_v,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_b,		togglebar,	{0} },
-	{ MODKEY|ShiftMask,		XK_b,		spawn,		SHCMD("hover left") },
-	{ MODKEY,			XK_n,		spawn,		SHCMD("st -e newsboat") },
-	{ MODKEY|ShiftMask,		XK_n,		spawn,		SHCMD("hover right") },
-	{ MODKEY,			XK_m,		spawn,		SHCMD("st -e ncmpcpp") },
-	{ MODKEY|ShiftMask,		XK_m,		spawn,		SHCMD("amixer sset Master toggle ; pkill -RTMIN+10 dwmblocks") },
-	{ MODKEY,			XK_comma,	spawn,		SHCMD("mpc prev") },
-	{ MODKEY|ShiftMask,		XK_comma,	spawn,		SHCMD("mpc seek 0%") },
-	{ MODKEY,			XK_period,	spawn,		SHCMD("mpc next") },
+	/* { MODKEY|ShiftMask,		XK_b,		spawn,		SHCMD("hover left") }, */
+	/* { MODKEY,			XK_n,		spawn,		SHCMD("st -e newsboat") }, */
+	/* { MODKEY|ShiftMask,		XK_n,		spawn,		SHCMD("hover right") }, */
+	/* { MODKEY,			XK_m,		spawn,		SHCMD("st -e ncmpcpp") }, */
+	{ MODKEY|ShiftMask,		XK_m,		spawn,		SHCMD("pulsemixer --toggle-mute; pkill -RTMIN+10 dwmblocks") },
+	/* { MODKEY,			XK_comma,	spawn,		SHCMD("mpc prev") }, */
+	/* { MODKEY|ShiftMask,		XK_comma,	spawn,		SHCMD("mpc seek 0%") }, */
+	/* { MODKEY,			XK_period,	spawn,		SHCMD("mpc next") }, */
 	/* { MODKEY|ShiftMask,		XK_period,	spawn,		SHCMD("") }, */
 
 
@@ -198,7 +199,7 @@ static Key keys[] = {
 	/* { MODKEY,			XK_F11,		spawn,		SHCMD("") }, */
 	{ MODKEY,			XK_F12,		spawn,		SHCMD("st -e sudo nmtui") },
 
-	/* { MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} }, */
+	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 
 
 	{ MODKEY,			XK_space,	zoom,		{0} },
@@ -211,9 +212,9 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,		XK_Print,	spawn,		SHCMD("dmenurecord kill") },
 	{ MODKEY,			XK_Delete,	spawn,		SHCMD("dmenurecord kill") },
 
-	{ 0,	XF86XK_AudioMute,	spawn,		SHCMD("amixer sset Master toggle ; pkill -RTMIN+10 dwmblocks") },
-	{ 0,	XF86XK_AudioRaiseVolume,	spawn,		SHCMD("amixer sset Master 5%+ ; pkill -RTMIN+10 dwmblocks") },
-	{ 0,	XF86XK_AudioLowerVolume,	spawn,		SHCMD("amixer sset Master 5%- ; pkill -RTMIN+10 dwmblocks") },
+	{ 0,	XF86XK_AudioMute,	spawn,		SHCMD("pulsemixer --toggle-mute; pkill -RTMIN+10 dwmblocks") },
+	{ 0,	XF86XK_AudioRaiseVolume,	spawn,		SHCMD("pulsemixer --change-volume +5; pkill -RTMIN+10 dwmblocks") },
+	{ 0,	XF86XK_AudioLowerVolume,	spawn,		SHCMD("pulsemixer --change-volume -5; pkill -RTMIN+10 dwmblocks") },
 	{ 0,	XF86XK_AudioPrev,	spawn,		SHCMD("mpc prev") },
 	{ 0,	XF86XK_AudioNext,	spawn,		SHCMD("mpc next") },
 	{ 0,	XF86XK_AudioPause,	spawn,		SHCMD("mpc pause") },
