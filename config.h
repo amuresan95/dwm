@@ -101,6 +101,8 @@ static Key keys[] = {
 	{ MODKEY,               XK_F4,                      spawn,          SHCMD("prompt \"Hibernate computer?\" \"sudo -A zzz -Z\"")                  },
 	{ 0,                    XF86XK_Sleep,               spawn,          SHCMD("prompt \"Hibernate computer?\" \"sudo -A zzz -Z\"")                  },
 
+    { MODKEY|ShiftMask,	    XK_s,                       spawn,          SHCMD("st -e spt")                                                          },
+	{ 0,	                XF86XK_AudioPlay,           spawn,          SHCMD("playerctl play-pause")                                               },
 	{ MODKEY,			    XK_a,                       spawn,          SHCMD("st -e pulsemixer ; pkill -RTMIN+10 dwmblocks")                       },
 	{ 0,	                XF86XK_AudioMute,           spawn,          SHCMD("pulsemixer --toggle-mute; pkill -RTMIN+10 dwmblocks")                },
 	{ MODKEY|ShiftMask,		XK_m,                       spawn,          SHCMD("pulsemixer --toggle-mute; pkill -RTMIN+10 dwmblocks")                },
