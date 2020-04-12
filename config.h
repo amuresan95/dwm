@@ -102,7 +102,9 @@ static Key keys[] = {
 	{ 0,                    XF86XK_Sleep,               spawn,          SHCMD("prompt \"Hibernate computer?\" \"sudo -A zzz -Z\"")                  },
 
     { MODKEY|ShiftMask,	    XK_s,                       spawn,          SHCMD("st -e spt")                                                          },
-	{ 0,	                XF86XK_AudioPlay,           spawn,          SHCMD("playerctl play-pause")                                               },
+	{ 0,	                XF86XK_AudioPlay,           spawn,          SHCMD("playerctl --player=spotifyd play-pause")                             },
+	{ 0,	                XF86XK_AudioNext,           spawn,          SHCMD("playerctl --player=spotifyd next")                                   },
+	{ 0,	                XF86XK_AudioPrev,           spawn,          SHCMD("playerctl --player=spotifyd previous")                               },
 	{ MODKEY,			    XK_a,                       spawn,          SHCMD("st -e pulsemixer ; pkill -RTMIN+10 dwmblocks")                       },
 	{ 0,	                XF86XK_AudioMute,           spawn,          SHCMD("pulsemixer --toggle-mute; pkill -RTMIN+10 dwmblocks")                },
 	{ MODKEY|ShiftMask,		XK_m,                       spawn,          SHCMD("pulsemixer --toggle-mute; pkill -RTMIN+10 dwmblocks")                },
@@ -123,6 +125,7 @@ static Key keys[] = {
 	{ MODKEY,               XK_p,                       spawn,          SHCMD("bwhelper")                                                           },
 	{ MODKEY|ShiftMask,     XK_p,                       spawn,          SHCMD("present")                                                            },
 	{ MODKEY|ShiftMask,     XK_h,                       spawn,          SHCMD("st -e gotop")                                                        },
+	{ MODKEY,               XK_h,                       spawn,          SHCMD("st -e neomutt")                                                      },
 
 	{ MODKEY,               XK_Insert,                  spawn,          SHCMD("showclip")                                                           },
 	{ MODKEY,               XK_F1,                      spawn,          SHCMD("groff -mom $HOME/.local/share/larbs/readme.mom -Tpdf | zathura -")   },
