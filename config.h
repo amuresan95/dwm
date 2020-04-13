@@ -118,6 +118,7 @@ static Key keys[] = {
 	{ MODKEY,               XK_p,                       spawn,          SHCMD("bwhelper")                                                           },
 	{ MODKEY|ShiftMask,     XK_p,                       spawn,          SHCMD("present")                                                            },
 	{ MODKEY|ShiftMask,     XK_h,                       spawn,          SHCMD("st -e gotop")                                                        },
+	{ MODKEY|ShiftMask,     XK_w,                       spawn,          SHCMD("st -e sudo nmtui")                                                        },
 	{ MODKEY,               XK_m,                       spawn,          SHCMD("st -e neomutt")                                                      },
 
 	{ MODKEY,               XK_Insert,                  spawn,          SHCMD("showclip")                                                           },
