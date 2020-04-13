@@ -93,14 +93,7 @@ static Key keys[] = {
 
 	{ MODKEY,               XK_q,                       killclient,     {0}                                                                         },
 
-	{ MODKEY|ShiftMask,     XK_Escape,                  spawn,          SHCMD("prompt \"Leave Xorg?\" \"killall Xorg\"")                            },
-	{ MODKEY,               XK_x,                       spawn,          SHCMD("slock & xset dpms force off; mpc pause ; pauseallmpv")               },
-	{ MODKEY|ShiftMask,     XK_x,                       spawn,          SHCMD("prompt \"Shutdown computer?\" \"sudo -A shutdown -h now\"")          },
-	{ 0,                    XF86XK_PowerOff,            spawn,          SHCMD("prompt \"Shutdown computer?\" \"sudo -A shutdown -h now\"")          },
-	{ MODKEY|ShiftMask,     XK_BackSpace,               spawn,          SHCMD("prompt \"Reboot computer?\" \"sudo -A reboot\"")                     },
-	{ MODKEY,               XK_F4,                      spawn,          SHCMD("prompt \"Hibernate computer?\" \"sudo -A zzz -Z\"")                  },
-	{ 0,                    XF86XK_Sleep,               spawn,          SHCMD("prompt \"Hibernate computer?\" \"sudo -A zzz -Z\"")                  },
-
+	{ MODKEY,               XK_x,                       spawn,          SHCMD("poweropts")                                                          },
     { MODKEY|ShiftMask,	    XK_s,                       spawn,          SHCMD("st -e spt")                                                          },
 	{ 0,	                XF86XK_AudioPlay,           spawn,          SHCMD("playerctl --player=spotifyd play-pause")                             },
 	{ 0,	                XF86XK_AudioNext,           spawn,          SHCMD("playerctl --player=spotifyd next")                                   },
