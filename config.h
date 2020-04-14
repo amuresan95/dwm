@@ -118,8 +118,9 @@ static Key keys[] = {
 	{ MODKEY,               XK_p,                       spawn,          SHCMD("bwhelper")                                                           },
 	{ MODKEY|ShiftMask,     XK_p,                       spawn,          SHCMD("present")                                                            },
 	{ MODKEY|ShiftMask,     XK_h,                       spawn,          SHCMD("st -e gotop")                                                        },
-	{ MODKEY|ShiftMask,     XK_w,                       spawn,          SHCMD("st -e sudo nmtui")                                                        },
+	{ MODKEY|ShiftMask,     XK_w,                       spawn,          SHCMD("st -e sudo nmtui")                                                   },
 	{ MODKEY,               XK_m,                       spawn,          SHCMD("st -e neomutt")                                                      },
+	{ MODKEY,               XK_c,                       spawn,          SHCMD("st -e calcurse")                                                     },
 
 	{ MODKEY,               XK_Insert,                  spawn,          SHCMD("showclip")                                                           },
 	{ MODKEY,               XK_F1,                      spawn,          SHCMD("groff -mom $HOME/.local/share/larbs/readme.mom -Tpdf | zathura -")   },
