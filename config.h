@@ -112,7 +112,6 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,     XK_Return,                  togglescratch,  {.v = scratchpadcmd }                                                       },
 	{ MODKEY,               XK_d,                       spawn,          {.v = dmenucmd }                                                            },
 	{ MODKEY,               XK_w,                       spawn,          SHCMD("$BROWSER")                                                           },
-	{ MODKEY,               XK_e,                       spawn,          SHCMD("emacs")                                                              },
 	{ MODKEY,               XK_r,                       spawn,          SHCMD("st -e $FILE")                                                        },
 	{ MODKEY,               XK_grave,                   spawn,          SHCMD("dmenuunicode")                                                       },
 	{ MODKEY,               XK_p,                       spawn,          SHCMD("bwhelper")                                                           },
