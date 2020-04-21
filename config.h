@@ -107,13 +107,8 @@ static Key keys[] = {
 	{ 0,	                XF86XK_AudioPrev,           spawn,          SHCMD("playerctl --player=spotifyd previous")                               },
 	{ MODKEY,			    XK_a,                       spawn,          SHCMD("st -e pulsemixer ; pkill -RTMIN+10 dwmblocks")                       },
 	{ 0,	                XF86XK_AudioMute,           spawn,          SHCMD("pulsemixer --toggle-mute; pkill -RTMIN+10 dwmblocks")                },
-	{ MODKEY|ShiftMask,		XK_m,                       spawn,          SHCMD("pulsemixer --toggle-mute; pkill -RTMIN+10 dwmblocks")                },
 	{ 0,	                XF86XK_AudioLowerVolume,    spawn,          SHCMD("pulsemixer --change-volume -5; pkill -RTMIN+10 dwmblocks")           },
-	{ MODKEY,			    XK_minus,                   spawn,          SHCMD("pulsemixer --change-volume -5; pkill -RTMIN+10 dwmblocks")           },
-	{ MODKEY|ShiftMask,		XK_minus,                   spawn,          SHCMD("pulsemixer --change-volume -15; pkill -RTMIN+10 dwmblocks")          },
 	{ 0,	                XF86XK_AudioRaiseVolume,    spawn,          SHCMD("pulsemixer --change-volume +5; pkill -RTMIN+10 dwmblocks")           },
-	{ MODKEY,			    XK_equal,                   spawn,          SHCMD("pulsemixer --change-volume +5; pkill -RTMIN+10 dwmblocks")           },
-	{ MODKEY|ShiftMask,		XK_equal,                   spawn,          SHCMD("pulsemixer --change-volume +15; pkill -RTMIN+10 dwmblocks")          },
 
 	{ MODKEY,               XK_Return,                  spawn,          {.v = termcmd }                                                             },
 	{ MODKEY|ShiftMask,     XK_Return,                  togglescratch,  {.v = scratchpadcmd }                                                       },
