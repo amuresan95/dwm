@@ -121,6 +121,7 @@ static Key keys[] = {
 	{ MODKEY,               XK_m,                       spawn,          SHCMD("st -e neomutt")                                                      },
 	{ MODKEY|ShiftMask,     XK_m,                       spawn,          SHCMD("st -e weechat")                                                      },
 	{ MODKEY,               XK_c,                       spawn,          SHCMD("st -e calcurse")                                                     },
+	{ MODKEY|ShiftMask,     XK_c,                       spawn,          SHCMD("addtodo")                                                            },
 	{ MODKEY,               XK_n,                       spawn,          SHCMD("st -e newsboat")                                                     },
 
 	{ MODKEY,               XK_Insert,                  spawn,          SHCMD("showclip")                                                           },
