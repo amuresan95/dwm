@@ -27,15 +27,22 @@ static char *colors[][3] = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class, instance, title, tags, mask, isfloating, monitor */
-	{ "Brave",  NULL,   NULL,   0,  0,  -1 },
+	/* class,             instance, title,      tags, mask, isfloating, monitor */
+	{ "Brave",              NULL,   NULL,       1<<2,  0,  -1 },
+	{ "jetbrains-pycharm",  NULL,   NULL,       1<<3,  0,  -1 },
+	{ "jetbrains-idea",     NULL,   NULL,       1<<3,  0,  -1 },
+	{ "St",                 NULL,   "neomutt",  1<<4,  0,  -1 },
+	{ "St",                 NULL,   "weechat",  1<<5,  0,  -1 },
+	{ "St",                 NULL,   "spt",      1<<6,  0,  -1 },
+	{ "St",                 NULL,   "calcurse", 1<<7,  0,  -1 },
+	{ "St",                 NULL,   "newsboat", 1<<8,  0,  -1 },
 };
 
 /* layout(s) */
