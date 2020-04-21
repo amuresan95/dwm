@@ -119,6 +119,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,     XK_h,                       spawn,          SHCMD("st -e gotop")                                                        },
 	{ MODKEY|ShiftMask,     XK_w,                       spawn,          SHCMD("st -e sudo nmtui")                                                   },
 	{ MODKEY,               XK_m,                       spawn,          SHCMD("st -e neomutt")                                                      },
+	{ MODKEY|ShiftMask,     XK_m,                       spawn,          SHCMD("st -e weechat")                                                      },
 	{ MODKEY,               XK_c,                       spawn,          SHCMD("st -e calcurse")                                                     },
 	{ MODKEY,               XK_n,                       spawn,          SHCMD("st -e newsboat")                                                     },
 
