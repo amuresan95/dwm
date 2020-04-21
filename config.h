@@ -94,7 +94,7 @@ static Key keys[] = {
 	{ MODKEY,               XK_q,                       killclient,     {0}                                                                         },
 
 	{ MODKEY,               XK_x,                       spawn,          SHCMD("poweropts")                                                          },
-    { MODKEY|ShiftMask,	    XK_s,                       spawn,          SHCMD("st -e spt")                                                          },
+    { MODKEY|ShiftMask,	    XK_s,                       spawn,          SHCMD("st -e spt -t 50")                                                          },
 	{ 0,	                XF86XK_AudioPlay,           spawn,          SHCMD("playerctl --player=spotifyd play-pause")                             },
 	{ 0,	                XF86XK_AudioNext,           spawn,          SHCMD("playerctl --player=spotifyd next")                                   },
 	{ 0,	                XF86XK_AudioPrev,           spawn,          SHCMD("playerctl --player=spotifyd previous")                               },
