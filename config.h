@@ -1,17 +1,17 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int gappih    = 10;       /* horiz inner gap between windows */
-static const unsigned int gappiv    = 10;       /* vert inner gap between windows */
-static const unsigned int gappoh    = 10;       /* horiz outer gap between windows and screen edge */
-static const unsigned int gappov    = 10;       /* vert outer gap between windows and screen edge */
+static const unsigned int gappih    = 8;       /* horiz inner gap between windows */
+static const unsigned int gappiv    = 8;       /* vert inner gap between windows */
+static const unsigned int gappoh    = 8;       /* horiz outer gap between windows and screen edge */
+static const unsigned int gappov    = 8;       /* vert outer gap between windows and screen edge */
 static const int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const int vertpad            = 10;       /* vertical padding of bar */
-static const int sidepad            = 10;       /* horizontal padding of bar */
+static const int vertpad            = 8;       /* vertical padding of bar */
+static const int sidepad            = 8;       /* horizontal padding of bar */
 static const char *fonts[]          = { "monospace:size=14" };
 static const char dmenufont[]       = "monospace:size=14";
 static char normbgcolor[]           = "#222222";
@@ -27,7 +27,7 @@ static char *colors[][3] = {
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
+static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -35,14 +35,19 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class,             instance, title,      tags, mask, isfloating, monitor */
-	{ "Brave",              NULL,   NULL,       1<<2,  0,  -1 },
-	{ "jetbrains-pycharm",  NULL,   NULL,       1<<3,  0,  -1 },
-	{ "jetbrains-idea",     NULL,   NULL,       1<<3,  0,  -1 },
-	{ "St",                 NULL,   "neomutt",  1<<4,  0,  -1 },
-	{ "St",                 NULL,   "weechat",  1<<5,  0,  -1 },
-	{ "St",                 NULL,   "spt",      1<<6,  0,  -1 },
-	{ "St",                 NULL,   "calcurse", 1<<7,  0,  -1 },
-	{ "St",                 NULL,   "newsboat", 1<<8,  0,  -1 },
+	{ "libreoffice",            NULL,   NULL,       1<<1,  0,  -1 },
+	{ "Firefox",                NULL,   NULL,       1<<2,  0,  -1 },
+	{ "Brave",                  NULL,   NULL,       1<<2,  0,  -1 },
+	{ "Brave",                  NULL,   "Save File",0,     0,   1 },
+	{ "jetbrains-pycharm",      NULL,   NULL,       1<<3,  0,  -1 },
+	{ "jetbrains-idea",         NULL,   NULL,       1<<3,  0,  -1 },
+	{ "jetbrains-webstorm",     NULL,   NULL,       1<<3,  0,  -1 },
+	{ "St",                     NULL,   "neomutt",  1<<4,  0,  -1 },
+	{ "St",                     NULL,   "weechat",  1<<5,  0,  -1 },
+	{ "St",                     NULL,   "spt",      1<<6,  0,  -1 },
+	{ "St",                     NULL,   "calcurse", 1<<7,  0,  -1 },
+	{ "St",                     NULL,   "newsboat", 1<<8,  0,  -1 },
+	{ "zoom",                   NULL,   NULL,       0,     0,   1 },
 };
 
 /* layout(s) */
@@ -101,14 +106,18 @@ static Key keys[] = {
 	{ MODKEY,               XK_q,                       killclient,     {0}                                                                         },
 
 	{ MODKEY,               XK_x,                       spawn,          SHCMD("poweropts")                                                          },
-    { MODKEY|ShiftMask,	    XK_s,                       spawn,          SHCMD("st -e spt -t 50")                                                          },
+	{ MODKEY|ShiftMask,     XK_x,                       spawn,          SHCMD("poweropts lock")                                                     },
+	{ MODKEY,			    XK_a,                       spawn,          SHCMD("st -e pulsemixer ; pkill -RTMIN+10 dwmblocks")                       },
+    { MODKEY|ShiftMask,	    XK_s,                       spawn,          SHCMD("st -e spt -t 50")                                                    },
 	{ 0,	                XF86XK_AudioPlay,           spawn,          SHCMD("playerctl --player=spotifyd play-pause")                             },
 	{ 0,	                XF86XK_AudioNext,           spawn,          SHCMD("playerctl --player=spotifyd next")                                   },
 	{ 0,	                XF86XK_AudioPrev,           spawn,          SHCMD("playerctl --player=spotifyd previous")                               },
-	{ MODKEY,			    XK_a,                       spawn,          SHCMD("st -e pulsemixer ; pkill -RTMIN+10 dwmblocks")                       },
 	{ 0,	                XF86XK_AudioMute,           spawn,          SHCMD("pulsemixer --toggle-mute; pkill -RTMIN+10 dwmblocks")                },
 	{ 0,	                XF86XK_AudioLowerVolume,    spawn,          SHCMD("pulsemixer --change-volume -5; pkill -RTMIN+10 dwmblocks")           },
 	{ 0,	                XF86XK_AudioRaiseVolume,    spawn,          SHCMD("pulsemixer --change-volume +5; pkill -RTMIN+10 dwmblocks")           },
+	{ 0,	                XF86XK_Tools,               spawn,          SHCMD("kbdbrightness")                                                      },
+	{ 0,	                XF86XK_MonBrightnessUp,     spawn,          SHCMD("brightness up")                                                      },
+	{ 0,	                XF86XK_MonBrightnessDown,   spawn,          SHCMD("brightness down")                                                    },
 
 	{ MODKEY,               XK_Return,                  spawn,          {.v = termcmd }                                                             },
 	{ MODKEY|ShiftMask,     XK_Return,                  togglescratch,  {.v = scratchpadcmd }                                                       },
@@ -118,7 +127,7 @@ static Key keys[] = {
 	{ MODKEY,               XK_grave,                   spawn,          SHCMD("dmenuunicode")                                                       },
 	{ MODKEY,               XK_p,                       spawn,          SHCMD("bwhelper")                                                           },
 	{ MODKEY|ShiftMask,     XK_p,                       spawn,          SHCMD("present")                                                            },
-	{ MODKEY|ShiftMask,     XK_h,                       spawn,          SHCMD("st -e gotop")                                                        },
+	{ MODKEY|ShiftMask,     XK_g,                       spawn,          SHCMD("st -e gotop")                                                        },
 	{ MODKEY|ShiftMask,     XK_w,                       spawn,          SHCMD("st -e sudo nmtui")                                                   },
 	{ MODKEY,               XK_m,                       spawn,          SHCMD("st -e neomutt")                                                      },
 	{ MODKEY|ShiftMask,     XK_m,                       spawn,          SHCMD("st -e weechat")                                                      },
@@ -129,7 +138,7 @@ static Key keys[] = {
 	{ MODKEY,               XK_Insert,                  spawn,          SHCMD("showclip")                                                           },
 	{ MODKEY,               XK_F1,                      spawn,          SHCMD("groff -mom $HOME/.local/share/larbs/readme.mom -Tpdf | zathura -")   },
 	{ MODKEY,               XK_F2,                      quit,           {0}                                                                         },
-	{ MODKEY,               XK_F3,                      spawn,          SHCMD("displayselect")                                                      },
+	{ MODKEY,               XK_F3,                      spawn,          SHCMD("displaytoggle")                                                      },
 	{ MODKEY,               XK_F5,                      xrdb,           {.v = NULL }                                                                },
 	{ MODKEY,               XK_F6,                      spawn,          SHCMD("torwrap")                                                            },
 	{ MODKEY,               XK_F7,                      spawn,          SHCMD("td-toggle")                                                          },
@@ -159,8 +168,8 @@ static Key keys[] = {
 	{ MODKEY,               XK_b,                       togglebar,      {0}                                                                         },
 	{ MODKEY|ShiftMask,     XK_d,                       togglegaps,     {0}                                                                         },
 
-	{ MODKEY,               XK_g,                       shiftview,      { .i = -1 }                                                                 },
-	{ MODKEY,               XK_semicolon,               shiftview,      { .i = 1 }                                                                  },
+	{ MODKEY|ShiftMask,     XK_h,                       shiftview,      { .i = -1 }                                                                 },
+	{ MODKEY|ShiftMask,     XK_l,                       shiftview,      { .i = 1 }                                                                  },
 	{ MODKEY,               XK_h,                       setmfact,       {.f = -0.05}                                                                },
 	{ MODKEY,               XK_l,                       setmfact,       {.f = +0.05}                                                                },
 	{ MODKEY,               XK_z,                       incrgaps,       {.i = +1 }                                                                  },
