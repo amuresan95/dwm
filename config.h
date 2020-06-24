@@ -37,16 +37,18 @@ static const Rule rules[] = {
 	 */
 	/* class,                   instance,   title,          tags mask,   isfloating, isterminal, noswallow, monitor */
 	{ "libreoffice",            NULL,       NULL,           1<<1,        0,          0,          0,         -1       },
+    { "firefoxdeveloperedition",NULL,       NULL,           1<<2,        0,          0,          0,         -1       },
+    { "brave-browser",          NULL,       NULL,           1<<2,        0,          0,          0,         -1       },
 	{ "jetbrains-pycharm",      NULL,       NULL,           1<<3,        0,          0,          0,         -1       },
 	{ "jetbrains-idea",         NULL,       NULL,           1<<3,        0,          0,          0,         -1       },
 	{ "jetbrains-webstorm",     NULL,       NULL,           1<<3,        0,          0,          0,         -1       },
-    { "St",                     NULL,       NULL,           0,           0,          1,          -1,        -1       },
 	{ "St",                     NULL,       "neomutt",      1<<4,        0,          1,          -1,        -1       },
 	{ "St",                     NULL,       "weechat",      1<<5,        0,          1,          -1,        -1       },
 	{ "St",                     NULL,       "spt",          1<<6,        0,          1,          -1,        -1       },
 	{ "St",                     NULL,       "calcurse",     1<<7,        0,          1,          -1,        -1       },
 	{ "St",                     NULL,       "newsboat",     1<<8,        0,          1,          -1,        -1       },
 	{ "zoom",                   NULL,       NULL,           0,           1,          0,          0,         -1       },
+    { "St",                     NULL,       NULL,           0,           0,          1,          -1,        -1       },
     { NULL,                     NULL,       "Event Tester", 0,           1,          0,          1,         -1       },
 };
 
